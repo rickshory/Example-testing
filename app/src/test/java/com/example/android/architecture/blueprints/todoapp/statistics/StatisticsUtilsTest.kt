@@ -41,15 +41,15 @@ class StatisticsUtilsTest {
         // Create an active task
         val tasks = listOf<Task>(
                 Task("title","desc", isCompleted = false),
-                Task("title2","desc2", isCompleted = true),
-                Task("title3","desc3", isCompleted = true)
+                Task("title","desc", isCompleted = true),
+                Task("title","desc", isCompleted = true)
         )
 
         // Call your function
         val result = getActiveAndCompletedStats(tasks)
 
         // Check the result
-        assertThat(result.completedTasksPercent).isWithin(1.0e-3f).of(66.6666f)
-        assertThat(result.activeTasksPercent).isWithin(1.0e-3f).of(33.3333f)
+        assertThat(result.completedTasksPercent).isWithin(1.0e-5f).of(100f * (2f / 3f))
+        assertThat(result.activeTasksPercent).isWithin(1.0e-5f).of(100f * (1f / 3f))
     }
 }
