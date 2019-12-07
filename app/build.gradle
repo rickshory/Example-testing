@@ -65,4 +65,5 @@ dependencies {
 
     // Other dependencies
     testImplementation "org.hamcrest:hamcrest-all:$hamcrestVersion"
+    testImplementation "com.google.truth:truth:1.0"
 }

@@ -57,5 +57,5 @@ class StatisticsUtilsTest {
 //        assertThat(result.activeTasksPercent, `is`(100f * (1f / 3f)))
 //    }
 
-    
+
 }
