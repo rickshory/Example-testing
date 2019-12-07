@@ -7,6 +7,19 @@ import org.junit.Test
 class StatisticsUtilsTest {
 
     @Test
+    fun getActiveAndCompletedStats_empty_returnsZeros() {
+        // Create an active task
+        val tasks = emptyList<Task>()
+
+        // Call your function
+        val result = getActiveAndCompletedStats(tasks)
+
+        // Check the result
+        assertThat(result.completedTasksPercent).isEqualTo(0f)
+        assertThat(result.activeTasksPercent).isEqualTo(0f)
+    }
+
+    @Test
     fun getActiveAndCompletedStats_noCompleted_returnsHundredZero() {
         // Create an active task
         val tasks = listOf<Task>(
@@ -18,6 +31,20 @@ class StatisticsUtilsTest {
 
         // Check the result
         assertThat(result.completedTasksPercent).isEqualTo(0f)
+    }
+
+
+    @Test
+    fun getActiveAndCompletedStats_error_returnsZeros() {
+        // Create an active task
+        val tasks = null
+
+        // Call your function
+        val result = getActiveAndCompletedStats(tasks)
+
+        // Check the result
+        assertThat(result.completedTasksPercent).isEqualTo(0f)
+        assertThat(result.activeTasksPercent).isEqualTo(0f)
     }
 
     @Test
