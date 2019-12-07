@@ -49,7 +49,7 @@ class StatisticsUtilsTest {
         val result = getActiveAndCompletedStats(tasks)
 
         // Check the result
-        assertThat(result.completedTasksPercent).isWithin(1.0e-5f).of(66.6666f)
-        assertThat(result.activeTasksPercent).isWithin(1.0e-5f).of(33.3333f)
+        assertThat(result.completedTasksPercent).isWithin(1.0e-3f).of(66.6666f)
+        assertThat(result.activeTasksPercent).isWithin(1.0e-3f).of(33.3333f)
     }
 }
