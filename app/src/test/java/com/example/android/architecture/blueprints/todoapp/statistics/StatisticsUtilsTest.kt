@@ -2,12 +2,6 @@ package com.example.android.architecture.blueprints.todoapp.statistics
 
 import com.example.android.architecture.blueprints.todoapp.data.Task
 import com.google.common.truth.Truth.assertThat
-
-
-import org.hamcrest.CoreMatchers.`is`
-
-
-
 import org.junit.Test
 
 class StatisticsUtilsTest {
@@ -23,8 +17,7 @@ class StatisticsUtilsTest {
         val result = getActiveAndCompletedStats(tasks)
 
         // Check the result
-        assertThat(result.completedTasksPercent, `is`(0f))
-//        assertThat(result.activeTasksPercent, `is`(100f))
+        assertThat(result.completedTasksPercent).isEqualTo(0f)
     }
 
     @Test
@@ -39,8 +32,8 @@ class StatisticsUtilsTest {
         val result = getActiveAndCompletedStats(tasks)
 
         // Check the result
-        assertThat(result.completedTasksPercent, `is`(50f))
-        assertThat(result.activeTasksPercent, `is`(50f))
+        assertThat(result.completedTasksPercent).isEqualTo(50f)
+        assertThat(result.activeTasksPercent).isEqualTo(50f)
     }
 
     @Test
