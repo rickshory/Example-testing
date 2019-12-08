@@ -14,6 +14,8 @@ class TasksViewModelTest {
         // Given a fresh TaskViewModel
         val tasksViewModel = TasksViewModel(ApplicationProvider.getApplicationContext())
         // When adding a new task
+        tasksViewModel.addNewTask()
         // Then the new task event is triggered
+        // TODO test LiveData
     }
 }
