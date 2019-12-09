@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import com.example.android.architecture.blueprints.todoapp.data.Result
 import com.example.android.architecture.blueprints.todoapp.data.Task
 
-class FakeDataSource : TasksDataSource {
+class FakeDataSource(var tasks: MutableList<Task>? = mutableListOf()) : TasksDataSource {
     override fun observeTasks(): LiveData<Result<List<Task>>> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
