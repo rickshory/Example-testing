@@ -24,4 +24,14 @@ class TasksViewModelTest {
         val value = tasksViewModel.newTaskEvent.getOrAwaitValue()
         assertThat(value.getContentIfNotHandled()).isNotNull()
     }
+
+    @Test
+    fun setFilterAllTasks_tasksAddViewVisible() {
+        // Given a fresh TaskViewModel
+        val tasksViewModel = TasksViewModel(ApplicationProvider.getApplicationContext())
+        // Set filtering to all tasks
+        tasksViewModel.setFiltering(TasksFilterType.ALL_TASKS)
+        // Then the the Add task button is visible
+        assertThat(tasksViewModel.tasksAddViewVisible.getOrAwaitValue()).isTrue()
+    }
 }
