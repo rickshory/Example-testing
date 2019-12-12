@@ -1,9 +1,12 @@
 package com.example.android.architecture.blueprints.todoapp.data.source
 
+import com.example.android.architecture.blueprints.todoapp.data.Result
 import com.example.android.architecture.blueprints.todoapp.data.Task
 import kotlinx.coroutines.Dispatchers
+import com.google.common.truth.Truth.assertThat
 import org.junit.Assert.*
 import org.junit.Before
+import org.junit.Test
 
 class DefaultTasksRepositoryTest {
     private val task1 = Task("Title1", "Description1")
@@ -26,9 +29,17 @@ class DefaultTasksRepositoryTest {
         // get a reference to the class under test
         tasksRepository = DefaultTasksRepository(
                 // TODO Dispatchers.Unconfined should be replaced with Dispatchers.Main
-        // this require understanding more about coroutines + testing
-        // so we will keep this as Unconfined for now
+                // this require understanding more about coroutines + testing
+                // so we will keep this as Unconfined for now
         tasksRemoteDataSource, tasksLocalDataSource, Dispatchers.Unconfined
         )
+    }
+
+    @Test
+    fun getTasks_requestAllTasksFromRemoteDataSource() {
+        // when tasks are requested from the tasks repository
+        val tasks = tasksRepository.getTasks(true) as Result.Success
+        // then tasks are loaded from the remote data source
+        assertThat(tasks.data).isEqualTo(remoteTasks)
     }
 }
