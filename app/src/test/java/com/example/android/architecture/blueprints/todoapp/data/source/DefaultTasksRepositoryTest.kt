@@ -1,7 +1,9 @@
 package com.example.android.architecture.blueprints.todoapp.data.source
 
 import com.example.android.architecture.blueprints.todoapp.data.Task
+import kotlinx.coroutines.Dispatchers
 import org.junit.Assert.*
+import org.junit.Before
 
 class DefaultTasksRepositoryTest {
     private val task1 = Task("Title1", "Description1")
@@ -17,4 +19,16 @@ class DefaultTasksRepositoryTest {
     // Class under test
     private lateinit var tasksRepository: DefaultTasksRepository
 
+    @Before
+    fun createRepository() {
+        tasksRemoteDataSource = FakeDataSource(remoteTasks.toMutableList())
+        tasksLocalDataSource = FakeDataSource(localTasks.toMutableList())
+        // get a reference to the class under test
+        tasksRepository = DefaultTasksRepository(
+                // TODO Dispatchers.Unconfined should be replaced with Dispatchers.Main
+        // this require understanding more about coroutines + testing
+        // so we will keep this as Unconfined for now
+        tasksRemoteDataSource, tasksLocalDataSource, Dispatchers.Unconfined
+        )
+    }
 }
