@@ -1,10 +1,15 @@
 package com.example.android.architecture.blueprints.todoapp.data.source
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.example.android.architecture.blueprints.todoapp.data.Result
 import com.example.android.architecture.blueprints.todoapp.data.Task
 
 class FakeTestRepository : TasksRepository {
+
+    var tasksServiceData: LinkedHashMap<String, Task> = LinkedHashMap()
+    private val observableTasks = MutableLiveData<Result<List<Task>>>()
+    
     override suspend fun getTasks(forceUpdate: Boolean): Result<List<Task>> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
