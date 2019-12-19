@@ -11,6 +11,13 @@ class FakeTestRepository : TasksRepository {
     var tasksServiceData: LinkedHashMap<String, Task> = LinkedHashMap()
     private val observableTasks = MutableLiveData<Result<List<Task>>>()
 
+    fun addTasks(vararg tasks: Task) {
+        for (task in tasks) {
+            tasksServiceData[task.id] = task
+        }
+        runBlocking { refreshTasks() }
+    }
+
     override suspend fun getTasks(forceUpdate: Boolean): Result<List<Task>> {
         return Result.Success(tasksServiceData.values.toList())
     }
