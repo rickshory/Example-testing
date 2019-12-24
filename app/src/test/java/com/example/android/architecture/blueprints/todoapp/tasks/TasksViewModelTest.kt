@@ -3,6 +3,7 @@ package com.example.android.architecture.blueprints.todoapp.tasks
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.example.android.architecture.blueprints.todoapp.data.source.FakeTestRepository
 import com.google.common.truth.Truth.assertThat
 import org.junit.Assert.*
 import org.junit.Before
@@ -12,6 +13,9 @@ import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 class TasksViewModelTest {
+
+    // use a fake repository to be injected into the viewmodel
+    private lateinit var tasksRepository: FakeTestRepository
 
     // Subject under test
     private lateinit var tasksViewModel: TasksViewModel
