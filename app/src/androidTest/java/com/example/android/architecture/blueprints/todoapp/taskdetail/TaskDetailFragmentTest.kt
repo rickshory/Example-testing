@@ -14,7 +14,7 @@ import org.junit.runner.RunWith
 class TaskDetailFragmentTest {
 
     @Test
-    fun activeTaskDetails_DisplayUnUi() {
+    fun activeTaskDetails_DisplayInUi() {
         // GIVEN - Add active (incomplete task to the DB
         val activeTask = Task("Active Task", "Androidx Rocks", false)
 
