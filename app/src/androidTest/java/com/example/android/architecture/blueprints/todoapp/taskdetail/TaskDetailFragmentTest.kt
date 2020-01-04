@@ -33,9 +33,10 @@ class TaskDetailFragmentTest {
     }
 
     @Test
-    fun activeTaskDetails_DisplayInUi() {
+    fun activeTaskDetails_DisplayInUi() = runBlockingTest {
         // GIVEN - Add active (incomplete task to the DB
         val activeTask = Task("Active Task", "Androidx Rocks", false)
+        repository.saveTask(activeTask)
 
         // WHEN - Details fragment launched to display task
         val bundle = TaskDetailFragmentArgs(activeTask.id).toBundle()
