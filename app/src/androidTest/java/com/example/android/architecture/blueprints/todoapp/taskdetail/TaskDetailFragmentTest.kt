@@ -8,6 +8,7 @@ import com.example.android.architecture.blueprints.todoapp.ServiceLocator
 import com.example.android.architecture.blueprints.todoapp.data.Task
 import com.example.android.architecture.blueprints.todoapp.data.source.TasksRepository
 import com.example.android.architecture.blueprints.todoapp.source.FakeAndroidTestRepository
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.After
 import org.junit.Assert.*
@@ -16,6 +17,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 @MediumTest
+@ExperimentalCoroutinesApi
 @RunWith(AndroidJUnit4::class)
 class TaskDetailFragmentTest {
 
