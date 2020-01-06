@@ -2,8 +2,11 @@ package com.example.android.architecture.blueprints.todoapp.tasks
 
 import android.os.Bundle
 import androidx.fragment.app.testing.launchFragmentInContainer
+import androidx.navigation.NavHostController
+import androidx.navigation.Navigation
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.MediumTest
+import com.example.android.architecture.blueprints.todoapp.R
 import com.example.android.architecture.blueprints.todoapp.ServiceLocator
 import com.example.android.architecture.blueprints.todoapp.data.Task
 import com.example.android.architecture.blueprints.todoapp.data.source.TasksRepository
@@ -15,6 +18,7 @@ import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.mockito.Mockito.mock
 
 @RunWith(AndroidJUnit4::class)
 @MediumTest
@@ -39,6 +43,11 @@ class TasksFragmentTest {
         repository.saveTask(Task("TITLE2", "DESCRIPTION2", false, "id2"))
 
         // GIVEN - On the home screen
-        val scenario = launchFragmentInContainer<TasksFragment>(Bundle)
+        val scenario
+                = launchFragmentInContainer<TasksFragment>(Bundle(), R.style.AppTheme)
+        val navController = mock(NavHostController::class.java)
+        scenario.onFragment {
+            Navigation.setViewNavController(it.view!!, navController)
+        }
     }
 }
