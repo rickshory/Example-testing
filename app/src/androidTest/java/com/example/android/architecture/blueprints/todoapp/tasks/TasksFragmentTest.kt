@@ -4,6 +4,11 @@ import android.os.Bundle
 import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.navigation.NavHostController
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.RecyclerView
+import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.contrib.RecyclerViewActions
+import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.MediumTest
 import com.example.android.architecture.blueprints.todoapp.R
@@ -49,5 +54,9 @@ class TasksFragmentTest {
         scenario.onFragment {
             Navigation.setViewNavController(it.view!!, navController)
         }
+        // WHEN - Click on the first list item
+        onView(withId(R.id.tasks_list))
+                .perform(RecyclerViewActions.actionOnItem<RecyclerView.ViewHolder>(
+                        hasDescendant(withText("TITLE1")), click()))
     }
 }
