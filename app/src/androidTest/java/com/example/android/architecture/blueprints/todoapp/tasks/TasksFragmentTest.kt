@@ -64,4 +64,18 @@ class TasksFragmentTest {
                 TasksFragmentDirections.actionTasksFragmentToTaskDetailFragment("id1")
         )
     }
+
+    @Test
+    fun clickAddTaskButton_navigateToAddEditFragment() = runBlockingTest {
+        // GIVEN - On the home screen
+        val scenario
+                = launchFragmentInContainer<TasksFragment>(Bundle(), R.style.AppTheme)
+        val navController = mock(NavHostController::class.java)
+        scenario.onFragment {
+            Navigation.setViewNavController(it.view!!, navController)
+        }
+        // WHEN - Click on the Floating Action Button (FAB)
+        onView(withId(R.id.add_task_fab))
+                .perform()
+    }
 }
