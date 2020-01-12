@@ -3,7 +3,7 @@ package com.example.android.architecture.blueprints.todoapp.tasks
 import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.testing.launchFragmentInContainer
-import androidx.navigation.NavHostController
+import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
@@ -53,7 +53,7 @@ class TasksFragmentTest {
         // GIVEN - On the home screen
         val scenario
                 = launchFragmentInContainer<TasksFragment>(Bundle(), R.style.AppTheme)
-        val navController = mock(NavHostController::class.java)
+        val navController = mock(NavController::class.java)
         scenario.onFragment {
             Navigation.setViewNavController(it.view!!, navController)
         }
@@ -72,7 +72,7 @@ class TasksFragmentTest {
         // GIVEN - On the home screen
         val scenario
                 = launchFragmentInContainer<TasksFragment>(Bundle(), R.style.AppTheme)
-        val navController = mock(NavHostController::class.java)
+        val navController = mock(NavController::class.java)
         scenario.onFragment {
             Navigation.setViewNavController(it.view!!, navController)
         }
