@@ -24,6 +24,7 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mockito.mock
+import org.mockito.Mockito.verify
 
 @RunWith(AndroidJUnit4::class)
 @MediumTest
@@ -58,5 +59,9 @@ class TasksFragmentTest {
         onView(withId(R.id.tasks_list))
                 .perform(RecyclerViewActions.actionOnItem<RecyclerView.ViewHolder>(
                         hasDescendant(withText("TITLE1")), click()))
+        // THEN - Verify that we navigate to the first detail screen
+        verify(navController).navigate(
+                TasksFragmentDirections.actionTasksFragmentToTaskDetailFragment("id1")
+        )
     }
 }
